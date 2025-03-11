@@ -1,0 +1,17 @@
+name: Capstone project CICD pipeline
+on: 
+ push:
+jobs:
+ capstoneproject:
+ runs-on: ubuntu-latest
+ steps:
+  - name: Checkout the code
+    uses: actions/checkout@v4
+  - name: Install Java and Maven
+    uses: actions/setup-java@v4
+    with:
+    distribution: 'temurin'
+    java-version: '11'
+    cache: maven
+  - name: Build the code
+    run: mvn package --file pom.xml
